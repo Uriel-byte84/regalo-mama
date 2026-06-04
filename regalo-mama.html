@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Mamá! 🎂</title>
+    <style>
+        :root {
+            --color-principal: #d81b60;
+            --color-secundario: #fce4ec;
+            --color-texto: #37474f;
+            --degradado-fondo: linear-gradient(135deg, #fce4ec 0%, #ffebee 100%);
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-texto: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--fuente-texto);
+            color: var(--color-texto);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: var(--degradado-fondo);
+        }
+
+        .main-container {
+            width: 90%;
+            max-width: 900px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            box-sizing: border-box;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-family: var(--fuente-titulos);
+            font-size: 3rem;
+            color: var(--color-principal);
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #78909c;
+            margin-bottom: 40px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 50px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            background-color: #000;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 500px;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--color-principal);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(216, 27, 96, 0.8);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .carousel-btn.prev {
+            left: 15px;
+        }
+
+        .carousel-btn.next {
+            right: 15px;
+        }
+
+        .time-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .time-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .circle-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--color-secundario);
+            color: var(--color-principal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+        }
+
+        .btn-modern {
+            display: block;
+            margin: 0 auto;
+            padding: 15px 35px;
+            color: white;
+            background-color: var(--color-principal);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
+        }
+
+        #final-message {
+            display: none;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #final-message.visible {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-track {
+                height: 350px;
+            }
+
+            .time-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <h1 id="mainTitle">¡Feliz cumpleaños, mamá!</h1>
+        <p class="subtitulo" id="mainSub">He preparado esta pequeña galería con nuestros mejores momentos.</p>
+
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide"><img src="1.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Juntos siempre ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="2.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Familia unida ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="3.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Puro amor ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="4.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Celebrando la vida ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="5.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Sonrisas hermosas ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="6.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Los mejores momentos ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="7.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Mi mamá hermosa ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="8.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Por siempre ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="9.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Momentos únicos ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="10.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">¡Te amamos! ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="11.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Celebración especial ❤️</div>
+                </div>
+                <div class="carousel-slide"><img src="12.jpeg" alt="Recuerdo">
+                    <div class="carousel-caption">Todos juntos ❤️</div>
+                </div>
+            </div>
+            <button class="carousel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
+            <button class="carousel-btn next" onclick="moverCarrusel(1)">&#10095;</button>
+        </div>
+
+        <div class="time-section">
+            <div class="time-item">
+                <div class="circle-icon">👩‍👦‍👦</div>
+                <div class="time-label">Mamá</div>
+            </div>
+            <div class="time-item">
+                <div class="circle-icon">🧒</div>
+                <div class="time-label">Tú</div>
+                <div id="edadMia"></div>
+            </div>
+            <div class="time-item">
+                <div class="circle-icon">🧒</div>
+                <div class="time-label">H. Mediana</div>
+                <div id="edadMedio"></div>
+            </div>
+            <div class="time-item">
+                <div class="circle-icon">👶</div>
+                <div class="time-label">H. Menor</div>
+                <div id="edadMenor"></div>
+            </div>
+        </div>
+
+        <button class="btn-modern" id="toggleButton">Toca aquí para tu sorpresa ✨</button>
+        <div id="final-message">Gracias por ser nuestra guía y la mejor mamá del mundo. ❤️</div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const track = document.getElementById('carouselTrack');
+
+        function moverCarrusel(step) {
+            slideIndex = (slideIndex + step + slides.length) % slides.length;
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        const calculateAge = (d) => {
+            const b = new Date(d + "T00:00:00"), t = new Date();
+            let y = t.getFullYear() - b.getFullYear();
+            return `${y} años`;
+        };
+
+        document.getElementById('edadMia').innerText = calculateAge('2000-03-12');
+        document.getElementById('edadMedio').innerText = calculateAge('2008-04-16');
+        document.getElementById('edadMenor').innerText = calculateAge('2021-11-21');
+
+        document.getElementById('toggleButton').addEventListener('click', (e) => {
+            document.getElementById('final-message').classList.add('visible');
+            e.target.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
