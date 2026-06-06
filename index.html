@@ -67,7 +67,7 @@
             max-width: 500px;
             margin: 0 auto 50px auto;
             border-radius: 15px;
-            overflow: hidden;
+            overflow: visible;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             background-color: #000;
         }
@@ -88,6 +88,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            display: block;
         }
 
         .carousel-caption {
@@ -95,37 +96,52 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             color: var(--color-principal);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 1rem;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 0.95rem;
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.4s ease-out;
         }
 
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(216, 27, 96, 0.8);
+            background-color: rgba(216, 27, 96, 0.85);
             color: white;
             border: none;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
             z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(216, 27, 96, 1);
+            box-shadow: 0 6px 15px rgba(216, 27, 96, 0.5);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
         }
 
         .carousel-btn.prev {
-            left: 15px;
+            left: -65px;
         }
 
         .carousel-btn.next {
-            right: 15px;
+            right: -65px;
         }
 
         .time-section {
@@ -133,14 +149,29 @@
             justify-content: space-around;
             align-items: center;
             margin-bottom: 50px;
-            padding: 20px;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
+            padding: 30px 20px;
+            border-top: 2px solid #eee;
+            border-bottom: 2px solid #eee;
+            background-color: #fafafa;
+            border-radius: 10px;
         }
 
         .time-item {
             text-align: center;
             flex: 1;
+        }
+
+        .time-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-principal);
+            margin-bottom: 8px;
+        }
+
+        .time-item div:last-child {
+            font-size: 1.1rem;
+            color: var(--color-texto);
+            font-weight: 500;
         }
 
         .circle-icon {
@@ -153,6 +184,13 @@
             justify-content: center;
             align-items: center;
             margin: 0 auto 15px;
+            font-size: 2.2rem;
+            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .circle-icon:hover {
+            transform: scale(1.05);
         }
 
         .btn-modern {
@@ -165,12 +203,43 @@
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-modern:hover {
+            background-color: #c2185b;
+            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-modern:active {
+            transform: translateY(0);
         }
 
         #final-message {
             display: none;
             text-align: center;
             margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(216, 27, 96, 0.1), rgba(252, 228, 236, 0.3));
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         #final-message.visible {
@@ -178,13 +247,102 @@
         }
 
         @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
             .carousel-track {
                 height: 350px;
+            }
+
+            .carousel-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .carousel-btn.prev {
+                left: -55px;
+            }
+
+            .carousel-btn.next {
+                right: -55px;
             }
 
             .time-section {
                 flex-direction: column;
                 gap: 30px;
+            }
+
+            .circle-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+
+            .btn-modern {
+                padding: 12px 30px;
+                font-size: 0.95rem;
+            }
+
+            #final-message {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 25px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+                margin-bottom: 5px;
+            }
+
+            .subtitulo {
+                font-size: 0.95rem;
+                margin-bottom: 25px;
+            }
+
+            .carousel-track {
+                height: 280px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .carousel-btn.prev {
+                left: -50px;
+            }
+
+            .carousel-btn.next {
+                right: -50px;
+            }
+
+            .carousel-caption {
+                font-size: 0.85rem;
+                padding: 8px 15px;
+            }
+
+            .time-section {
+                padding: 15px;
+                margin-bottom: 30px;
+            }
+
+            .circle-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .time-label {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -192,105 +350,132 @@
 
 <body>
     <div class="main-container">
-        <h1 id="mainTitle">¡Feliz cumpleaños, mamá!</h1>
-        <p class="subtitulo" id="mainSub">He preparado esta pequeña galería con nuestros mejores momentos.</p>
+        <h1>¡Feliz cumpleaños, mamá!</h1>
+        <p class="subtitulo">He preparado esta pequeña galería con nuestros mejores momentos.</p>
 
         <div class="carousel-container">
             <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-slide"><img src="1.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/1.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Juntos siempre ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="2.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/2.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Familia unida ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="3.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/3.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Puro amor ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="4.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/4.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Celebrando la vida ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="5.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/5.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Sonrisas hermosas ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="6.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/6.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Los mejores momentos ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="7.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/7.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Mi mamá hermosa ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="8.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/8.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Por siempre ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="9.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/9.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Momentos únicos ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="10.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/10.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">¡Te amamos! ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="11.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/11.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Celebración especial ❤️</div>
                 </div>
-                <div class="carousel-slide"><img src="12.jpeg" alt="Recuerdo">
+                <div class="carousel-slide"><img src="public/12.jpg" alt="Recuerdo familiar">
                     <div class="carousel-caption">Todos juntos ❤️</div>
                 </div>
             </div>
+            <button class="carousel-btn prev" id="prevBtn" aria-label="Foto anterior">&#10094;</button>
+            <button class="carousel-btn next" id="nextBtn" aria-label="Siguiente foto">&#10095;</button>
         </div>
-    </div>
-    </div>
-    <button class="carousel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
-    <button class="carousel-btn next" onclick="moverCarrusel(1)">&#10095;</button>
-    </div>
 
-    <div class="time-section">
-        <div class="time-item">
-            <div class="circle-icon">👩‍👦‍👦</div>
-            <div class="time-label">Mamá</div>
+        <div class="time-section">
+            <div class="time-item">
+                <div class="circle-icon">👩‍👦‍👦</div>
+                <div class="time-label">Mamá</div>
+            </div>
+            <div class="time-item">
+                <div class="circle-icon">🧒</div>
+                <div class="time-label">Tú</div>
+                <div id="edadMia"></div>
+            </div>
+            <div class="time-item">
+                <div class="circle-icon">🧒</div>
+                <div class="time-label">H. Mediana</div>
+                <div id="edadMedio"></div>
+            </div>
+            <div class="time-item">
+                <div class="circle-icon">👶</div>
+                <div class="time-label">H. Menor</div>
+                <div id="edadMenor"></div>
+            </div>
         </div>
-        <div class="time-item">
-            <div class="circle-icon">🧒</div>
-            <div class="time-label">Tú</div>
-            <div id="edadMia"></div>
-        </div>
-        <div class="time-item">
-            <div class="circle-icon">🧒</div>
-            <div class="time-label">H. Mediana</div>
-            <div id="edadMedio"></div>
-        </div>
-        <div class="time-item">
-            <div class="circle-icon">👶</div>
-            <div class="time-label">H. Menor</div>
-            <div id="edadMenor"></div>
-        </div>
-    </div>
 
-    <button class="btn-modern" id="toggleButton">Toca aquí para tu sorpresa ✨</button>
-    <div id="final-message">Gracias por ser nuestra guía y la mejor mamá del mundo. ❤️</div>
+        <button class="btn-modern" id="toggleButton">Toca aquí para tu sorpresa ✨</button>
+        <div id="final-message">Gracias por ser nuestra guía y la mejor mamá del mundo. ❤️</div>
     </div>
 
     <script>
         let slideIndex = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const track = document.getElementById('carouselTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const toggleButton = document.getElementById('toggleButton');
+        const finalMessage = document.getElementById('final-message');
 
         function moverCarrusel(step) {
             slideIndex = (slideIndex + step + slides.length) % slides.length;
             track.style.transform = `translateX(-${slideIndex * 100}%)`;
         }
 
-        const calculateAge = (d) => {
-            const b = new Date(d + "T00:00:00"), t = new Date();
-            let y = t.getFullYear() - b.getFullYear();
-            return `${y} años`;
-        };
+        function calculateAge(birthDateString) {
+            const today = new Date();
+            const birthDate = new Date(birthDateString + "T00:00:00");
 
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+
+            // Si aún no ha llegado el cumpleaños este año, restar 1
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            return `${age} años`;
+        }
+
+        // Event listeners para botones del carrusel
+        prevBtn.addEventListener('click', () => moverCarrusel(-1));
+        nextBtn.addEventListener('click', () => moverCarrusel(1));
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') moverCarrusel(-1);
+            if (e.key === 'ArrowRight') moverCarrusel(1);
+        });
+
+        // Calcular edades
         document.getElementById('edadMia').innerText = calculateAge('2000-03-12');
         document.getElementById('edadMedio').innerText = calculateAge('2008-04-16');
         document.getElementById('edadMenor').innerText = calculateAge('2021-11-21');
 
-        document.getElementById('toggleButton').addEventListener('click', (e) => {
-            document.getElementById('final-message').classList.add('visible');
+        // Event listener para botón de sorpresa
+        toggleButton.addEventListener('click', (e) => {
+            finalMessage.classList.add('visible');
             e.target.style.display = 'none';
         });
+
+        // Auto-advance del carrusel (opcional, cada 8 segundos)
+        setInterval(() => {
+            moverCarrusel(1);
+        }, 8000);
     </script>
 </body>
 
